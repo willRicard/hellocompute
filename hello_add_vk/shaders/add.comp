@@ -1,0 +1,14 @@
+#version 450 core
+
+layout(std140, binding = 0) readonly buffer InputX {
+  float x[];
+};
+
+layout(std140, binding = 1) buffer InputY {
+  float y[];
+};
+
+void main() {
+  uint index = gl_GlobalInvocationID.x;
+  y[index] = x[index] + y[index];
+}
